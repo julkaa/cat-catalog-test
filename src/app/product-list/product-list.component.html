@@ -1,0 +1,26 @@
+<a (click)="adaptData()" mat-button>Show Cats</a>
+
+<div class="row">
+
+  <div class="col-3">
+    <filter-block></filter-block>
+  </div>
+
+  <div class="col-7">
+    <ul class="u-listReset product-grid">
+      <li *ngFor="let product of products" class="u-marginBottom">
+        <mat-card class="product-card">
+          <mat-card-header>
+            <mat-card-title>{{ product.name }}</mat-card-title>
+            <mat-card-subtitle><strong>Price: {{ product.price }} $</strong></mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image src="{{ product.url }}">
+          <mat-card-actions class="u-marginTopAuto">
+            <a (click)="adaptData()" mat-button>View details</a>
+          </mat-card-actions>
+        </mat-card>
+      </li>
+    </ul>
+  </div>
+
+</div>
