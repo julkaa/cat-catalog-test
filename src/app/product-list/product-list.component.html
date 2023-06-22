@@ -1,26 +1,32 @@
-<a (click)="adaptData()" mat-button>Show Cats</a>
-
 <div class="row">
 
   <div class="col-3">
-    <filter-block></filter-block>
+    <filter-block (newsEmitter)="addFilter($event)" [breeds]="breeds"></filter-block>
   </div>
 
-  <div class="col-7">
+  <div class="col-9">
     <ul class="u-listReset product-grid">
       <li *ngFor="let product of products" class="u-marginBottom">
         <mat-card class="product-card">
           <mat-card-header>
             <mat-card-title>{{ product.name }}</mat-card-title>
-            <mat-card-subtitle><strong>Price: {{ product.price }} $</strong></mat-card-subtitle>
           </mat-card-header>
-          <img mat-card-image src="{{ product.url }}">
-          <mat-card-actions class="u-marginTopAuto">
-            <a (click)="adaptData()" mat-button>View details</a>
-          </mat-card-actions>
+          <img mat-card-image src="{{ product.url }}" style="height: 250px">
+          <mat-card-content *ngIf="product.temperament">
+            <mat-card-subtitle style="position: relative;top: 5px;"><strong>{{ product.temperament }}</strong>
+            </mat-card-subtitle>
+          </mat-card-content>
         </mat-card>
       </li>
     </ul>
+
+    <div *ngIf="isLoading">
+      <h1 style="margin-top: 10px;">Loading...</h1>
+    </div>
+
+    <div *ngIf="!products.length && !isLoading">
+      <h2 style="margin-top: 10px;">No Cats were found :c</h2>
+    </div>
   </div>
 
 </div>

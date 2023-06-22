@@ -1,0 +1,30 @@
+<div [formGroup]="form" class="popup-wrapper" mat-dialog-content>
+  <h4>Breed</h4>
+  <mat-form-field>
+    <mat-label>Breed</mat-label>
+    <mat-select formControlName="breedControl">
+      <mat-option>None</mat-option>
+      <mat-option (click)="onFilter()" *ngFor="let breed of breeds" [value]="breed['id']">{{breed['name']}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <h4>Category</h4>
+  <mat-form-field>
+    <mat-label>Category</mat-label>
+    <mat-select formControlName="categoryControl">
+      <mat-option (click)="onFilter()">None</mat-option>
+      <mat-option (click)="onFilter()" *ngFor="let category of categories" [value]="category['id']"
+      >{{category['name']}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <h4>Amount</h4>
+  <mat-form-field>
+    <mat-label>Amount</mat-label>
+    <mat-select formControlName="amountControl">
+      <mat-option>None</mat-option>
+      <mat-option (click)="onFilter()" *ngFor="let number of [3, 6, 9, 12, 15]" [value]="number"
+      >{{number}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
