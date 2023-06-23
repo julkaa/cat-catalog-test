@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {CatService} from "../../shared/services/cat.service";
+import {IBreed} from "../../shared/models/cat-breed.model";
 
 @Component({
   selector: 'filter-block',
@@ -45,7 +46,7 @@ export class FilterBlockComponent {
   });
 
   @Input()
-  breeds: string[] = [];
+  breeds: IBreed[] = [];
 
   @Output()
   newsEmitter = new EventEmitter<Event>();
