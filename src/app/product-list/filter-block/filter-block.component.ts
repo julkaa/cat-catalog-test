@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
+import {CatService} from "../../shared/services/cat.service";
 
 @Component({
   selector: 'filter-block',
@@ -7,9 +8,6 @@ import {FormControl, FormGroup} from "@angular/forms";
   styleUrls: ['./filter-block.component.scss']
 })
 export class FilterBlockComponent {
-  @Input()
-  breeds: string[] = [];
-
   categories = [
     {
       id: 5,
@@ -40,15 +38,21 @@ export class FilterBlockComponent {
       name: 'ties'
     },
   ];
-
-  @Output()
-  newsEmitter = new EventEmitter<Event>();
-
   form: FormGroup = new FormGroup({
     breedControl: new FormControl(''),
     categoryControl: new FormControl(''),
     amountControl: new FormControl(''),
   });
+
+  @Input()
+  breeds: string[] = [];
+
+  @Output()
+  newsEmitter = new EventEmitter<Event>();
+
+  constructor(public catService: CatService) {
+    this.breeds = this.catService.breeds;
+  }
 
   public onFilter(): void {
     this.newsEmitter.emit(this.form?.value);

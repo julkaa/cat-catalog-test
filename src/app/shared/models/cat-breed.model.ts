@@ -8,9 +8,10 @@ export interface ICatData {
 }
 
 export interface IBreed {
+  id?: string;
   name: string;
-  temperament: string;
-  description: string;
+  temperament?: string;
+  description?: string;
 }
 
 export interface IOldCatData {

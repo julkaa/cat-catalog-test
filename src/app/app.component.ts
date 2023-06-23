@@ -6,6 +6,4 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.scss', 'shared/grid.scss']
 })
 export class AppComponent {
-  constructor() {
-  }
 }
